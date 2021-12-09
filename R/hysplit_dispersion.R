@@ -94,12 +94,12 @@ hysplit_dispersion <- function(lat = 49.263,
   # Modify numbers of particles in the SETUP.CFG file
   readLines(con = file.path(exec_dir, "SETUP.CFG")) %>%
     tidy_gsub(
-      pattern = " numpar = ([0-9]*),",
-      replacement = paste0(" numpar = ", particle_num, ",")
+      pattern = "\nnumpar = ([0-9]*),",
+      replacement = paste0("\nnumpar = ", particle_num, ",")
     ) %>%
     tidy_gsub(
-      pattern = " maxpar = ([0-9]*),",
-      replacement = paste0(" maxpar = ", particle_max, ",")
+      pattern = "\nmaxpar = ([0-9]*),",
+      replacement = paste0("\nmaxpar = ", particle_max, ",")
     ) %>%
     writeLines(con = file.path(exec_dir, "SETUP.CFG"))
   
